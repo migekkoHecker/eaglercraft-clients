@@ -6,9 +6,9 @@
   <title>GekkoGames — Minecraft Clients</title>
   <style>
     :root{
-      --bg-1:#071013;
-      --bg-2:#061726;
-      --accent:#00ff9d;
+      --bg-1:#070c15;
+      --bg-2:#0a1526;
+      --accent:#3fa9ff;
       --card:#0f1720;
       --glass: rgba(255,255,255,0.04);
       --muted: #9aa6b2;
@@ -23,7 +23,6 @@
       color: #e6f0f2;
       background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 100%);
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -74,7 +73,6 @@
       box-shadow: 0 8px 30px rgba(2,6,23,0.6);
     }
 
-    /* clients grid */
     .clients-grid{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
@@ -107,7 +105,7 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.025), rgba(0,0,0,0.06));
       border: 1px solid rgba(255,255,255,0.03);
     }
-    .thumb svg{width:36px;height:36px}
+    .thumb svg{width:36px;height:36px;color:var(--accent)}
 
     .meta{
       flex:1;
@@ -134,7 +132,7 @@
       margin-left:auto;
       background: rgba(0,0,0,0.25);
       color:var(--accent);
-      border:1px solid rgba(0,255,157,0.12);
+      border:1px solid rgba(63,169,255,0.12);
       padding:4px 8px;
       border-radius:999px;
       font-size:12px;
@@ -176,13 +174,13 @@
       align-items:center;
       gap:8px;
       transition: all .12s ease;
-      border:1px solid rgba(0,255,157,0.06);
+      border:1px solid rgba(63,169,255,0.06);
     }
-    .btn:hover{ transform:translateY(-3px); background: rgba(0,255,157,0.03) }
+    .btn:hover{ transform:translateY(-3px); background: rgba(63,169,255,0.05) }
     .open {
-      background: linear-gradient(90deg, rgba(0,255,157,0.08), rgba(0,255,157,0.04));
-      color:#00130b;
-      border:1px solid rgba(0,255,157,0.22);
+      background: linear-gradient(90deg, rgba(63,169,255,0.12), rgba(63,169,255,0.08));
+      color:#e6f0f2;
+      border:1px solid rgba(63,169,255,0.3);
       padding:8px 12px;
       border-radius:10px;
       font-weight:700;
@@ -199,7 +197,6 @@
       font-size:13px;
     }
 
-    /* small screens adjustments */
     @media (max-width:520px){
       header{gap:12px}
       .logo{width:48px;height:48px}
@@ -209,59 +206,55 @@
 </head>
 <body>
   <div class="container">
-    <header class="card" aria-hidden="false">
+    <header class="card">
       <div style="display:flex;align-items:center;gap:12px">
-        <div class="logo" aria-hidden="true">
-          <!-- small creeper-ish SVG icon -->
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="4" fill="url(#g)"/>
+        <div class="logo">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="18" height="18" rx="4" fill="url(#blueGrad)"/>
             <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#00ff9d" stop-opacity="0.95"/>
-                <stop offset="1" stop-color="#00c28a" stop-opacity="0.9"/>
+              <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3fa9ff" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#006eff" stop-opacity="0.9"/>
               </linearGradient>
             </defs>
           </svg>
         </div>
         <div>
           <h1>GekkoGames — Minecraft Clients</h1>
-          <p class="lead">Click a client to open it. Add new clients quickly in the script below.</p>
+          <p class="lead">Click a client to open it. Add new ones easily in the script below.</p>
         </div>
       </div>
     </header>
 
-    <section class="card" aria-labelledby="clients-title">
+    <section class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
         <div>
-          <h2 id="clients-title" style="margin:0;font-size:14px">Available Clients</h2>
+          <h2 style="margin:0;font-size:14px">Available Clients</h2>
           <p style="margin:6px 0 0 0;color:var(--muted);font-size:13px">Open in a new tab — copy links with the button.</p>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
-          <button id="copyAll" class="btn" title="Copy all client links to clipboard">Copy All Links</button>
+          <button id="copyAll" class="btn" title="Copy all client links">Copy All Links</button>
         </div>
       </div>
 
       <div class="clients-grid" id="clientsGrid" style="margin-top:14px;">
-        <!-- JavaScript will populate client cards here -->
+        <!-- JS populates here -->
       </div>
 
       <div class="footer" style="margin-top:14px">
-        <div>Tip: To add more clients edit the <code>clients</code> array in the script inside this file.</div>
+        <div>Edit the <code>clients</code> array in the script below to add more.</div>
         <div>© <strong>GekkoGames</strong></div>
       </div>
     </section>
   </div>
 
   <script>
-    // ---- EDIT THIS ARRAY TO ADD/REMOVE CLIENTS ----
-    // Each entry: { name, url, desc, versionBadge }
     const clients = [
-      { name: "Minecraft 1.5.2 (JS)", url: "https://mc.gekkogames.xyz/1.5.2/minecraft-js", desc: "Classic 1.5.2 experience running in JavaScript.", versionBadge: "1.5.2" },
+      { name: "Minecraft 1.5.2 (JS)", url: "https://mc.gekkogames.xyz/1.5.2/minecraft", desc: "Classic 1.5.2 experience running in JavaScript.", versionBadge: "1.5.2" },
       { name: "Minecraft 1.8.8 (JS)", url: "https://mc.gekkogames.xyz/1.8.8/minecraft-js", desc: "Fast 1.8.8 client implemented in JS.", versionBadge: "1.8.8" },
-      { name: "Minecraft 1.8.8 (WASM)", url: "https://mc.gekkogames.xyz/1.8.8/minecraft-wasm", desc: "1.8.8 using WebAssembly for better perf.", versionBadge: "1.8.8 (WASM)" },
+      { name: "Minecraft 1.8.8 (WASM)", url: "https://mc.gekkogames.xyz/1.8.8/minecraft-wasm", desc: "1.8.8 using WebAssembly for better performance.", versionBadge: "1.8.8 (WASM)" },
       { name: "Minecraft 1.12.2", url: "https://mc.gekkogames.xyz/1.12.2/minecraft", desc: "Modern 1.12.2 client build.", versionBadge: "1.12.2" },
     ];
-    // -----------------------------------------------
 
     const grid = document.getElementById("clientsGrid");
 
@@ -270,19 +263,18 @@
       wrapper.className = "client";
       wrapper.tabIndex = 0;
 
-      // thumb (svg)
       const thumb = document.createElement("div");
       thumb.className = "thumb";
       thumb.innerHTML = `
-        <svg viewBox="0 0 24 24" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
           <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
           <path d="M6 9c0-1.5 1-3 2.5-3s2.5 1.5 2.5 3-1 3-2.5 3S6 10.5 6 9zM15 9c0-1.5 1-3 2.5-3S20 7.5 20 9s-1 3-2.5 3S15 10.5 15 9z" fill="currentColor" fill-opacity="0.16"/>
         </svg>
       `;
 
-      // meta
       const meta = document.createElement("div");
       meta.className = "meta";
+
       const title = document.createElement("div");
       title.className = "title";
       const h3 = document.createElement("h3");
@@ -300,7 +292,6 @@
       meta.appendChild(title);
       meta.appendChild(desc);
 
-      // actions
       const actions = document.createElement("div");
       actions.className = "actions";
 
@@ -310,46 +301,36 @@
       open.href = c.url;
       open.target = "_blank";
       open.rel = "noopener noreferrer";
-      open.setAttribute("aria-label", "Open " + c.name);
 
       const copy = document.createElement("button");
       copy.className = "btn";
       copy.type = "button";
-      copy.title = "Copy link to clipboard";
-      copy.innerHTML = "Copy";
-
+      copy.textContent = "Copy";
       copy.addEventListener("click", async (ev) => {
         ev.preventDefault();
         try {
           await navigator.clipboard.writeText(c.url);
           copy.textContent = "Copied ✓";
           setTimeout(()=> copy.textContent = "Copy", 1500);
-        } catch (err) {
-          // fallback
+        } catch {
           prompt("Copy this link:", c.url);
         }
       });
 
       actions.appendChild(open);
       actions.appendChild(copy);
-
       wrapper.appendChild(thumb);
       wrapper.appendChild(meta);
       wrapper.appendChild(actions);
-
       return wrapper;
     }
 
-    // render all clients
     function render() {
       grid.innerHTML = "";
-      clients.forEach(c=>{
-        grid.appendChild(createClientCard(c));
-      });
+      clients.forEach(c=> grid.appendChild(createClientCard(c)));
     }
     render();
 
-    // copy all links
     document.getElementById("copyAll").addEventListener("click", async ()=>{
       const all = clients.map(c=>c.url).join("\\n");
       try{
@@ -357,20 +338,10 @@
         const btn = document.getElementById("copyAll");
         btn.textContent = "Copied ✓";
         setTimeout(()=> btn.textContent = "Copy All Links", 1600);
-      }catch(e){
+      }catch{
         prompt("Copy all links:", all);
-      }
-    });
-
-    // optional: keyboard support — enter opens focused card's link
-    grid.addEventListener("keydown", (e)=>{
-      const el = document.activeElement;
-      if(e.key === "Enter" && el && el.classList.contains("client")){
-        const idx = Array.from(grid.children).indexOf(el);
-        if(clients[idx]) window.open(clients[idx].url, "_blank", "noopener");
       }
     });
   </script>
 </body>
 </html>
-
