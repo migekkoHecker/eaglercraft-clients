@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GekkoGames Minecraft Clients</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #00ff9d;
+    }
+
+    .clients {
+      display: grid;
+      gap: 1rem;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: white;
+      background: #1c1c1c;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      border: 2px solid #00ff9d20;
+    }
+
+    a:hover {
+      background: #00ff9d;
+      color: #000;
+      transform: scale(1.03);
+      border-color: #00ff9d;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>GekkoGames Minecraft Clients</h1>
+
+  <div class="clients">
+    <a href="https://mc.gekkogames.xyz/1.5.2/minecraft-js" target="_blank">Minecraft 1.5.2 (JS)</a>
+    <a href="https://mc.gekkogames.xyz/1.8.8/minecraft-js" target="_blank">Minecraft 1.8.8 (JS)</a>
+    <a href="https://mc.gekkogames.xyz/1.8.8/minecraft-wasm" target="_blank">Minecraft 1.8.8 (WASM)</a>
+    <a href="https://mc.gekkogames.xyz/1.12.2/minecraft" target="_blank">Minecraft 1.12.2</a>
+  </div>
+
+  <footer>© 2025 GekkoGames</footer>
+</body>
+</html>
